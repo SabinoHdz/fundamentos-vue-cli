@@ -3,10 +3,11 @@
   <p>
     {{ counter }} <sup>2={{ squareCounter }}</sup>
   </p>
+  <p data-testid="counter">{{ counter }}</p>
   <!-- <p>
     {{ counter }} <sup>2={{ squareCounter }}</sup>
   </p> -->
-  <div>
+  <div class="button button-color-blue">
     <button @click="increment">+1</button>
     <button @click="decrement">-1</button>
   </div>
@@ -21,7 +22,6 @@ export default {
     },
     start: {
       type: Number,
-      required: true,
       default: 10,
       validator(value) {
         return value > 0 && value < 21;
@@ -50,7 +50,7 @@ export default {
       return this.counter * this.counter;
     },
     customTitle() {
-      return this.title || "counter";
+      return this.title || "Counter";
     },
   },
 };
