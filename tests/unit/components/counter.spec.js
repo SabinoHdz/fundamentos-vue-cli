@@ -24,4 +24,22 @@ describe("Counter Componer", () => {
     //expect sengudo p==100
     //expect(elementsParaghapList[1].text()).toBe("10");
   });
+
+  test("debe de incrementar y decrementar  el contador", async () => {
+    const wrapper = shallowMount(CounterView);
+    const incrementBtn = wrapper.find("button");
+    await incrementBtn.trigger("click");
+    let value = wrapper.find('[ data-testid="counter"]').text();
+    expect(value).toBe("11");
+    const btns = wrapper.findAll("button");
+    const decrementBtn = btns[1];
+    await decrementBtn.trigger("click");
+    await decrementBtn.trigger("click");
+    value = wrapper.find('[ data-testid="counter"]').text();
+
+    expect(value).toBe("9");
+  });
+  // para ejecutar el test de counter se utiliza el siguiente comando:
+  //npm run test:unit counter
+  //npm run test:unit <nombreComponente>
 });
